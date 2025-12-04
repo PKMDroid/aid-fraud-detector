@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship, declarative_base
 Base = declarative_base()
 
 class Project(Base):
-    "Represents a humanitarian aid project"
+    "Represents a aid system project"
     __tablename__ = 'projects'
     
     id = Column(Integer, primary_key=True)
@@ -20,7 +20,7 @@ class Project(Base):
         return sum(t.amount for t in self.transactions)
     
     def remaining_budget(self):
-        """Calculate remaining budget"""
+        "Calculate remaining budget"
         return self.budget - self.total_spent()
     
     def __repr__(self):
