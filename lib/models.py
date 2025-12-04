@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship, declarative_base
 Base = declarative_base()
 
 class Project(Base):
-    """Represents a humanitarian aid project"""
+    "Represents a humanitarian aid project"
     __tablename__ = 'projects'
     
     id = Column(Integer, primary_key=True)
@@ -16,7 +16,7 @@ class Project(Base):
     fraud_flags = relationship('FraudFlag', back_populates='project', cascade='all, delete-orphan')
     
     def total_spent(self):
-        """Calculate total amount spent on this project"""
+        "Calculate total amount spent on this project"
         return sum(t.amount for t in self.transactions)
     
     def remaining_budget(self):
@@ -28,7 +28,7 @@ class Project(Base):
 
 
 class Transaction(Base):
-    """Represents a financial transaction for a project"""
+    "Represents a financial transaction for a project"
     __tablename__ = 'transactions'
     
     id = Column(Integer, primary_key=True)
@@ -44,7 +44,7 @@ class Transaction(Base):
 
 
 class FraudFlag(Base):
-    """Represents a detected fraud indicator"""
+    "Represents a detected fraud indicator"
     __tablename__ = 'fraud_flags'
     
     id = Column(Integer, primary_key=True)
